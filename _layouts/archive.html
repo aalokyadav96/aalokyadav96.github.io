@@ -1,38 +1,40 @@
 ---
-layout: default
+layout: page
 ---
 
-  {% for collection in site.collections %}
-    {% if collection.docs.size > 0 %}
-    
-  
-  {% for post in collection.docs %}
+
+{% for post in site.posts %}
+{% for cat in post.categories %}
+{% if cat == page.category %}
+
+
 <div class="post-list-item">
-      <div class="post-list-item-date">
-        <time>{{ post.date | date_to_string }}</time>
-      </div>
-      <div class="post-list-item-title">
-        {% if post.link %}
-        <a href="{{ post.link }}">
-        {% else %}
-        <a href="{{ post.url | prepend: site.baseurl }}">
-        {% endif %}
-        {{ post.title }}
-      </a>
-      </div>
-      {% if post.description %}
-      <div class="post-list-item-desc">
-        {{ post.description }}
-      </div>
-      {% endif %}
-  </div>
-
-  {% endfor %}
-
+  {% if post.link %}
+  <a href="{{ post.link }}">
+  {% else %}
+  <a href="{{ post.url | prepend: site.baseurl }}">
   {% endif %}
-  {% endfor %}
-  
-  {% if paginator.total_pages > 1 %}
+    <div class="post-list-item-date">
+      <time>{{ post.date | date_to_string }}</time>
+    </div>
+    <div class="post-list-item-title">
+      {{ post.title }}
+    </div>
+    {% if post.description %}
+    <div class="post-list-item-desc">
+      {{ post.description }}
+    </div>
+    {% endif %}
+  </a>
+</div>
+
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+
+{% if paginator.total_pages > 1 %}
     <nav class="pagination">
       {% if paginator.previous_page %}
         <a class="paginationLink" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
@@ -53,3 +55,5 @@ layout: default
     {% endif %}
     </nav>
   {% endif %}
+
+  

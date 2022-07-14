@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Example Of A News Article
+title: Golang &colon; Create a Translation Website
 tags:
 - text
 - news
