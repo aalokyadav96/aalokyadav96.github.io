@@ -1,0 +1,15 @@
+- name: This Blog
+  link: #
+  tech_stack: "HTML5, CSS3, Jekyll"
+
+- name: Portfolio
+  link: 0sey0.github.io
+  tech_stack: "HTML5, CSS3, JavaScript"
+
+- name: URL Shortener
+  link: /#
+  tech_stack: "HTML5, CSS3, Python Flask, SQLite3"
+
+- name: Translator
+  link: /#
+  tech_stack: "HTML5, CSS3, Python Flask, AI"

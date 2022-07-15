@@ -1,11 +1,14 @@
+---
+# Main styling
+---
+
 /**************************************
     $CRITICAL CSS
 /**************************************/
 * {
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   font-kerning: auto;
+  box-sizing: border-box;
 }
 
 html {
@@ -18,7 +21,7 @@ body {
     background: #fffff8;
     color: #111;
     counter-reset: sidenote-counter;
-    font: 1.4rem/2rem Georgia, serif;
+    font: 1.4rem/2rem "et-book", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
     height: 100%;
     margin: 0 auto;
     max-width: 1440px;
@@ -26,18 +29,22 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6 {
+    font-style: italic;
     font-weight: normal;
     line-height: 1;
     margin: 0;
     text-transform: capitalize;
 }
-h1 { font-size: 3.2rem; font-style: normal; margin-top: 1rem; }
-h2 { font-size: 2.2rem; margin-bottom: 2.2rem; }
-h3 { font-size: 1.7rem; }
+h1 { font-size: 3.2rem; font-style: normal; margin-top: 2.6rem; }
+h2 { font-size: 2.2rem; margin-top: 4.2rem; }
+h3 { font-size: 1.7rem; margin-top: 2.6rem; }
 
 p,table,blockquote,pre,img,hr,.mini-note,ul li,ol li {
     box-sizing: border-box;
     max-width: 55%;
+}
+.MathJax_SVG_Display {
+    max-width: 55% !important;
 }
 li ul li, li ol li {
     max-width: 100%;
@@ -48,8 +55,7 @@ p {
 }
 
 a,a:visited {
-    color: rgb(50, 67, 219);
-    text-decoration: none;
+    color: #111;
 
     &:hover {
         color: rgb(220, 40, 40);
@@ -80,8 +86,19 @@ hr {
     background: #111;
     border: 0;
     height: 1px;
-    margin: 1rem 0;
+    margin: 4rem 0;
     width: 100%;
+}
+
+pre {
+    font-size: 80%;
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+code {
+    font-size: 80%;
 }
 
 img {
@@ -118,7 +135,7 @@ table {
     $DEFAULT CLASSES
 /**************************************/
 /*p*/.subtitle {
-    font-size: 1rem;
+    font-size: 1.8rem;
     font-style: italic;
 }
 
@@ -136,7 +153,8 @@ table {
 }
 
 /*span*/.marginnote,
-/*span*/.sidenote {
+/*span*/.sidenote,
+figcaption {
     font-size: 80%;
     left: calc(100% + 4rem);
     line-height: 1.3rem;
@@ -173,7 +191,8 @@ table {
 
 figure {
     /*span*/.marginnote,
-    /*span*/.sidenote {
+    /*span*/.sidenote,
+    figcaption {
         left: auto;
         position: relative;
     }
@@ -209,13 +228,39 @@ figure {
     $NAVIGATION
 /**************************************/
 nav {
-    margin: 2rem 0 1rem 0;
+    margin-bottom: 6rem;
+    margin-top: 1rem;
+
+    .menu-icon {
+        cursor: pointer;
+        display: none;
+        text-decoration: underline;
+    }
+
+    .menu-btn {
+        display: none;
+    }
+
+    .menu-btn:checked ~ .site-nav {
+        display: block;
+    }
+
+    ul.site-nav {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            margin: 0 1.5rem 0 0;
+        }
+
+        a,a:visited {
+            text-decoration: none;
+        }
+    }
 }
 
-nav a {
-    margin: 0.5rem;
-    font-size: 1.3rem;
-}
 /**************************************
     $MEDIA QUERIES - TABLET
 /**************************************/
@@ -226,8 +271,14 @@ nav a {
         width: calc(100% - 20px);
     }
 
+    h2.title { margin-top: 2rem; }
+
     p,table,blockquote,pre,img,hr,.mini-note,ul li,ol li {
         max-width: 100%;
+    }
+
+    .MathJax_SVG_Display {
+        max-width: 100% !important;
     }
 
     nav {
@@ -257,7 +308,8 @@ nav a {
     }
 
     /*span*/.marginnote,
-    /*span*/.sidenote {
+    /*span*/.sidenote,
+    figcaption {
         display: block;
         left: auto;
         margin-top: 1rem;
@@ -268,103 +320,13 @@ nav a {
 
 }
 
-.mrg3{
-    margin-top: 3.6rem;
-}
-.arth2{
-    margin-top: 2.6rem;
-}
-.arth2 a {
-    text-decoration: underline;
-}
-.post-list-item {padding: 1rem 0;}
-.post-list-item-title{margin-bottom:.3rem;font-size:28.8px;font-weight:600}
-.post-list-item-date{font-size:13.5px}
-.post-list-item-desc{color:#343a40;margin-bottom:.25rem;font-size:1rem}
-
-/*------------rgb(19, 217, 35)----------------*/
-.prev {
-max-width: 50%;
-float: right;
-text-align: right;
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    body{background:#191919;filter:invert(1);}
+    .highlight{border-color: grey !important;}
+    img,iframe,.highlight,a:hover,a:focus{filter:invert(1);}
 }
 
-.next {
-max-width: 50%;
-float: left;
-text-align: left;
+.title {
+	text-decoration: 0;
 }
-
-.pagination {
-font-size: 1.25rem;
-padding: 1rem 0;
-max-width: 700px;
-}
-
-.pagination::after {
-content: "";
-clear: both;
-display: block
-}
-
-.recpo {
-    color: black;
-    font-weight: bold;
-    font-style: normal;
-}
-.pagination a {color: blueviolet;font-weight: bold;}
-.coverimg {width: 100px;float: left;padding: 4px 8px 4px 0px;}
-::-moz-selection{background:#f7d2d2;color:#333;text-shadow:none}
-::selection{background:#9affc8;color:#000;text-shadow:none}
-.sitename {
-  color: rgb(102, 70, 2)!important;
-  font-size: 3rem;
-  margin: 1rem 0 1rem;
-}
-.title-tags {
-    color: #777;
-    font-size: 1.125rem;
-    margin: 10px auto;
-}
-.tags {
-    background-color: #444;
-    color: #fff;
-    padding: 2px 5px;
-    border-radius: 2px;
-    text-decoration: none;
-}
-
-
-/*------------------*/
-  
-  ul, ol {
-      padding: 0;
-      list-style-position: inside;
-  }
-  
-  table {
-      border-collapse: collapse;
-      text-align: left;
-      width: 100%;
-  
-      tr {
-          border-bottom: 1px solid black;
-      }
-  
-      td {
-          padding: 0.5rem;
-      }
-  }
-  
-  img {
-      width: 100%;
-      margin: 0.5rem 0;
-  }
-
-  footer {
-      margin: 1rem 0;
-      text-align: center;
-      color: inherit;
-  }
-  
-  

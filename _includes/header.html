@@ -1,6 +1,12 @@
-<header>
-    <h1 class="sitename"><a class="sitename" href='{{ site.url }}/'>{{ site.title }}</a></h1>
-</header>
-{% include nav.html %}
-
-
+<a class="title" href="/"><h2>{{ site.title }}</h2></a>
+<nav class="sans">
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <p><label class="menu-icon" for="menu-btn">Menu</label></p>
+    <ul class="site-nav">
+        <li><a href="/">Articles</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+    </ul>
+</nav>

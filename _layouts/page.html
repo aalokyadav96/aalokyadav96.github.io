@@ -1,21 +1,24 @@
 ---
-layout: default
+layout: compress
 ---
-<article class="post">
 
-  <hr>
-  
-  {%if page.tagline%}
-  <div class="tagline">
-  <span class="page-title">{{page.title}}</span> <br/>
-  <span class="post-list-item-desc"><em>{{page.tagline}}</em></span>
-  </div>
-  {% endif %}
-  
-  <hr>
+{% include head.html %}
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+    <main>
 
-</article>
+        {% include header.html %}
+
+        <article>
+
+            <h1>{{ page.title }}</h1>
+
+            {{ content }}
+
+        </article>
+
+    </main>
+
+    {% include footer.html %}
+
+</body>
+</html>
