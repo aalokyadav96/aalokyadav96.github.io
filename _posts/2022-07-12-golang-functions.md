@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Golang &colon; Functions, Methods and Interfaces
+categories: ["golang"]
 tags:
-- text
 - golang
 ---
 

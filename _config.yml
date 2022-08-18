@@ -1,68 +1,22 @@
-title : Aalok Yadav
-name: 'Aalok Yadav'
-description: 'सहज पके सो मीठा होय'
+title: Aalok Yadav
+description: Reverse engineering the universe and Programming.
 
 markdown: kramdown
-highlighter: rouge
-javascript_enabled: true
 
-featured_posts_title: Unrelated
-featured_posts:
-  - url: '#'
-    title: 'Featured post #1'
-  - url: '#'
-    title: 'Featured post #2'
-  - url: '#'
-    title: 'Featured post #3'
+compress_html:
+  clippings: all
+  comments: [""]
+  endings: [html, head, body, li, dt, dd, rt, rp, optgroup, option, colgroup, caption, thead, tbody, tfoot, tr, td, th]
+  profile: false
+  blanklines: false
+  ignore:
+    envs: []
 
-collections:
-  news:
-    title: News
-    default_open: false
-    output: true
-  posts:
-    title: Essays
-    default_open: true
-    output: true
-  golang:
-    title: Golang
-    default_open: false
-    output: true
-  golang_cs:
-    title: Golang CS
-    default_open: false
-    output: true
-  golang_web:
-    title: Golang Web
-    default_open: false
-    output: true
+permalink: pretty
+paginate: 6
+exclude:
+- README.md
 
-defaults:
-  - scope:
-      type: posts
-    values:
-      title: Essays
-      permalink: /post/:title
-  - scope:
-      type: news
-    values:
-      title: News
-      permalink: /news/:title
-  - scope:
-      type: golang
-    values:
-      title: Golang
-      permalink: /golang/:title
-  - scope:
-      type: golang_cs
-    values:
-      title: Golang CLI tools
-      permalink: /golang/cs/:title
-  - scope:
-      type: golang_web
-    values:
-      title: Golang Web Dev
-      permalink: /golang/web/:title
-
-plugins:
-  - jekyll-sitemap
+plugins: [jekyll-paginate, kramdown]
+# Build settings
+markdown: kramdown

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Golang &colon; Compilation and other things
+categories: ["golang"]
 tags:
-- text
 - golang
 ---
 

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Golang &colon; Quirks and Irks
+categories: ["golang"]
 tags:
-- text
 - golang
 ---
 

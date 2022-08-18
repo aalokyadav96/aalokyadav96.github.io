@@ -1,0 +1,12 @@
+<section class="mrg3">
+  <hr>
+  {%if page.tagline%}
+  <div class="tagline">
+  <span class="page-title">Recent Posts</span> <br/>
+  </div>
+  {% endif %}
+  <hr>
+{% for post in site.posts limit:4 %}  
+<li><a class="recpo" href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %} 
+</section> 

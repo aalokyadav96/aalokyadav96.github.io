@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Golang &colon; Container Types
+categories: ["golang"]
 tags:
-- text
 - golang
 ---
 

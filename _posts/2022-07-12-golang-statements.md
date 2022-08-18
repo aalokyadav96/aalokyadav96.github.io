@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Golang &colon; Statements
+categories: ["golang"]
 tags:
-- text
 - golang
 ---
 

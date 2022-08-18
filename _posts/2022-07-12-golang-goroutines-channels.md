@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Golang &colon; Goroutines and Channels
+categories: ["golang"]
 tags:
-- text
 - golang
 ---
 
