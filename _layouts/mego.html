@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+
+<header>
+  <hr class="stylish" />
+  <h3 class="recpo">{{ page.title }}</h3>
+  <div class="title-tags">
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%-d %B, %Y. It was %A.' }}</time>
+    <div class="tags-container">
+      Posted under <span>
+          {% for tag in page.tags %}
+            <a class="tags" href="/tags#{{ tag }}">{{ tag }}</a>
+          {% endfor %}
+        </span>
+      &nbsp;
+    </div>
+  </div>
+  <hr class="stylish" />
+</header>
+
+
+<main role="main">
+
+  <article>
+      {{content}}
+  </article>
+
+
+
+</main>
+
+<section class="pagination">
+  {% if page.previous.url %}
+  <a class="prev" href="{{page.previous.url}}">{{page.previous.title}} &raquo;</a>
+  {% endif %}
+  {% if page.next.url %}
+  <a class="next" href="{{page.next.url}}">&laquo; {{page.next.title}}</a>
+  {% endif %}
+</section>
+  
+  
