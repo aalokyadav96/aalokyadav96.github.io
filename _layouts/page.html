@@ -1,21 +1,17 @@
 ---
-layout: default
+layout: eltags
 ---
-<article class="post">
 
-  <hr>
-  
-  {%if page.tagline%}
-  <div class="tagline">
-  <span class="page-title">{{page.title}}</span> <br/>
-  <span class="post-list-item-desc"><em>{{page.tagline}}</em></span>
-  </div>
-  {% endif %}
-  
-  <hr>
+<header>
+    <h1>{{ page.title }}</h1>
+</header>
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+<hr class="stylish"/>
 
-</article>
+<main role="main">
+
+    <article>
+        {{content}}
+    </article>
+
+</main>

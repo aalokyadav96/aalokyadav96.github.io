@@ -1,42 +1,23 @@
 ---
 layout: default
-title: "Aalok Yadav"
-hdr: Home
-tagline: Thinking of a Tagline
+title: Home
 ---
 
-<hr>
-  
-<div class="tagline">
-<span class="page-title">{{page.hdr}}</span> <br/>
-<span class="post-list-item-desc"><em>{{page.tagline}}</em></span>
-</div>
+<section class="archivecon">
+{% for post in paginator.posts %}
+<article class="post-con">
+    <time>{{ post.date | date_to_string }}</time>
+<h2>
+    <a href='{{ site.url }}{{ post.url }}' title='{{ post.title }}'>
+      {{ post.title }}
+    </a>
+  </h2>
+	<p>{{ post.excerpt | strip_html | truncate: 250 }}</p>      
+  </article>
+{% endfor %}
 
-<hr>
-{% for post in paginator.posts%}
- 
-<div class="post-list-item">
-      <div class="post-list-item-date">
-        <time>{{ post.date | date_to_string }}</time>
-      </div>
-      <div class="post-list-item-title">
-        {% if post.link %}
-        <a href="{{ post.link }}">
-        {% else %}
-        <a href="{{ post.url | prepend: site.baseurl }}">
-        {% endif %}
-        {{ post.title }}
-      </a>
-      </div>
-      {% if post.description %}
-      <div class="post-list-item-desc">
-        {{ post.description }}
-      </div>
-      {% endif %}
-  </div>
-
-  {% endfor %}
-
+<hr class="stylish"/>
+<center>
   {% if paginator.total_pages > 1 %}
     <nav class="pagination">
       {% if paginator.previous_page %}
@@ -58,3 +39,6 @@ tagline: Thinking of a Tagline
     {% endif %}
     </nav>
   {% endif %}
+</center>
+<hr class="stylish"/>
+</section> 

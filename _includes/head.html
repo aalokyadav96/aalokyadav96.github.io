@@ -1,29 +1,38 @@
-<!DOCTYPE html>
-<!--#if expr="$HTTP_COOKIE=/fonts\-loaded\=true/" -->
-<html lang="en" class="fonts-loaded" dir="ltr">
-<!--#else -->
-<html lang="en" dir="ltr">
-<!--#endif -->
+{% if page.layout == 'post' %}
+  {% assign description = page.excerpt %}
+{% else %}
+  {% assign description = site.description %}
+{% endif %}
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-    <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
-    <link href='{{ site.baseurl }}/feed.xml' rel='alternate' type='application/atom+xml'>
-    <link rel="canonical" href="{{ site.baseurl }}{{ page.url }}">
-    {% capture critical %}
-        {% include style.scss %}
-    {% endcapture %}
-    <style>
-        {{ critical | scssify }}
-    </style>
-<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" id="viewport" name="viewport">
-<meta content="noimageindex, noarchive" name="robots">
-<meta content="yes" name="mobile-web-app-capable">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="{{ description | newline_to_br | strip_newlines | replace: '<br />', ' ' | strip_html | strip | truncate: 160 }}" />
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="/css/flex.css"/>
+  <link rel="stylesheet" href="/css/normalize.css"/>
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml" />
+  <title>{% if page.title == "Home" %}{{ site.title }}{% else %}{{ page.title }} &middot; {{ site.title }}{% endif %}</title>
+  {% if page.layout == 'post' %}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": "{{ site.author.name }}",
+        "datePublished": "{{ page.date | date_to_xmlschema }}",
+        "headline": "{{ page.title }}",
+        "url": "{{ site.url }}{{ page.url }}",
+        "inLanguage": "en-US",
+        "isFamilyFriendly": "true",
+        "keywords": "{{ page.tags| join: ", " }}",
+        "image": "{{ site.url }}/favicon.ico",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "{{ site.url }}{{ page.url }}"
+       }
+      }
+    </script>
+  {% endif %}
 </head>
-
-<body>

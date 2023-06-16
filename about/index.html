@@ -1,0 +1,167 @@
+---
+layout: default
+---
+            <h2>About</h2>
+            <p>About page</p>
+</div>
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+a:link {
+  text-decoration: none;
+  outline: none;
+  transition: all 0.25s;
+}
+
+a:visited,
+a:link:hover,
+a:visited:hover {
+  text-decoration: none;
+}
+
+body {
+  background: #eaeaea none repeat scroll top left;
+  color: #444;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  line-height: normal;
+}
+
+.container {
+  background: #fff;
+  min-width: 320px;
+  margin: 5% auto;
+  padding: 10px;
+  box-shadow: 0 10px 5px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #00c73c;
+  font-family: 'Open Sans', sans-serif;
+}
+/* Recent Post Navigasi */
+
+#recentpostnav {
+  border: 1px solid #585858;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#recentpostsae {
+  margin: 0px;
+}
+
+.recentpostel {
+  background: #fff;
+  display: block;
+  border: 1px solid #ddd;
+  margin: 5px 0;
+  padding: 10px;
+  height: 79px;
+}
+
+.recentpostel img {
+  background: #fff;
+  padding: 4px;
+  float: left;
+  height: 70px;
+  margin-right: 8px;
+  width: 70px;
+  border: 1px solid #ddd;
+}
+
+.recentpostel h6,
+.recentpostel h6 a {
+  text-decoration: none;
+  font-size: 13px!important;
+  font-weight: 700!important;
+  margin: 0;
+  color: #111;
+}
+
+.recentpostel:hover {
+  background-color: #fefefe;
+}
+
+.recentpostel p {
+  font-size: 12px;
+  text-align: left;
+  color: #555;
+  line-height: normal;
+  margin: 5px 0;
+}
+
+#recentpostload {
+  color: #888;
+  font-family: Tahoma;
+  font-size: 100px;
+  letter-spacing: -10px;
+  text-align: center;
+  text-shadow: -5px 0 1px #444;
+  background: #fff url(https://2.bp.blogspot.com/-60aISBQLRY0/VFBMqzLfzGI/AAAAAAAABgM/GInmVTvEzkc/s1600/loader.gif) no-repeat 50% 50%;
+  height: 470px;
+  border: 1px solid #ddd;
+}
+
+#recentpostnavfeed {
+  border: 1px solid #ddd;
+  color: #bbb;
+  font-family: Verdana;
+  font-size: 12px;
+  text-align: center;
+  margin: 0px;
+}
+
+#recentpostnavfeed:hover {
+  background-color: #fefefe;
+}
+
+#recentpostnavfeed a {
+  color: #141414!important;
+  font-family: Tahoma!important;
+  font-size: 12px!important;
+  font-weight: 400!important;
+  display: block;
+  padding: 5px 10px;
+}
+
+#recentpostnavfeed span {
+  padding: 5px 10px;
+}
+
+#recentpostnavfeed .next {
+  float: right;
+}
+
+#recentpostnavfeed .previous {
+  float: left;
+}
+
+#recentpostnavfeed .home {
+  text-align: center;
+}
+
+#recentpostnavfeed a:hover,
+#recentpostnavfeed span.noactived {
+  color: transparant!important;
+}
+
+</style>
+
+
+    <div class="container">
+    <div id="recentpostsae"></div>
+    <div id="recentpostnavfeed"></div>
+    </div>
+
+    </body>
+    <script type='text/javascript'>
+//<![CDATA[
+    var numfeed = 5;
+    var startfeed = 0;
+    var urlblog = "https://lightmybodyup.blogspot.com";
+    var charac = 50;
+    var urlprevious, urlnext;
+function arlinafeed(e,t){for(var n=e.split("<"),r=0;r<n.length;r++)-1!=n[r].indexOf(">")&&(n[r]=n[r].substring(n[r].indexOf(">")+1,n[r].length));return n=n.join(""),n=n.substring(0,t-1)}function showrecentpostsae(e){var t,n,r,a,i,s="";urlprevious="",urlnext="";for(var l=0;l<e.feed.link.length;l++)"previous"==e.feed.link[l].rel&&(urlprevious=e.feed.link[l].href),"next"==e.feed.link[l].rel&&(urlnext=e.feed.link[l].href);for(var d=0;d<numfeed&&d!=e.feed.entry.length;d++){t=e.feed.entry[d],n=t.title.$t;for(var l=0;l<t.link.length;l++)if("alternate"==t.link[l].rel){r=t.link[l].href;break}i="content"in t?t.content.$t:"summary"in t?t.summary.$t:"",a="media$thumbnail"in t?t.media$thumbnail.url:"https://3.bp.blogspot.com/-BHuXHny1kOk/VXrkSyxKCjI/AAAAAAAACas/pZLJAEUDtds/s1600/no-image.png",s+="<div class='recentpostel'>",s+="<a href='"+r+"' target='_blank'><img src='"+a+"' /></a>",s+="<h6><a href='"+r+"'>"+n+"</a></h6>",s+="<p>"+arlinafeed(i,charac)+"...</p>",s+="</div>"}document.getElementById("recentpostsae").innerHTML=s,s="",s+=urlprevious?"<a href='javascript:navigasifeed(-1);' class='previous'>Previous</a>":"<span class='noactived previous'>Previous</span>",s+=urlnext?"<a href='javascript:navigasifeed(1);' class='next'>Next</a>":"<span class='noactived next'>Next</span>",s+="<a href='javascript:navigasifeed(0);' class='home'>Home</a>",document.getElementById("recentpostnavfeed").innerHTML=s}function navigasifeed(e){var t,n;-1==e?(t=urlprevious.indexOf("?"),n=urlprevious.substring(t)):1==e?(t=urlnext.indexOf("?"),n=urlnext.substring(t)):n="?start-index=1&max-results="+numfeed+"&orderby=published&alt=json-in-script",n+="&callback=showrecentpostsae",incluirscript(n)}function incluirscript(e){1==startfeed&&removerscript(),document.getElementById("recentpostsae").innerHTML="<div id='recentpostload'></div>",document.getElementById("recentpostnavfeed").innerHTML="";var t=urlblog+"/feeds/posts/default"+e,n=document.createElement("script");n.setAttribute("type","text/javascript"),n.setAttribute("src",t),n.setAttribute("id","arlinalabel"),document.getElementsByTagName("head")[0].appendChild(n),startfeed=1}function removerscript(){var e=document.getElementById("arlinalabel"),t=e.parentNode;t.removeChild(e)}onload=function(){navigasifeed(0)};
+//]]>
+</script>
+    </html>
